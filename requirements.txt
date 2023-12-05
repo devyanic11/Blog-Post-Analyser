@@ -3,7 +3,6 @@ matplotlib
 streamlit
 beautifulsoup4
 requests
-string
 re
 nltk
 stopwords
