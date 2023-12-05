@@ -1,7 +1,7 @@
 pandas
 matplotlib
 streamlit
-BeautifulSoup
+beautifulsoup4
 requests
 string
 re
