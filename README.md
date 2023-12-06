@@ -1,6 +1,6 @@
 # Content Analyzer
 
-![App Screenshot](link_to_screenshot.png)
+![App Screenshot](https://github.com/devyanic11/Blog-Post-Analyser/blob/main/content-analyser.jpg)
 
 <!--- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]((https://github.com/devyanic11/Blog-Post-Analyser/blob/7e6ca11cb9b5fe2a5268857f7263b11e93e1d9c9/LICENSE))
 [![GitHub Issues](https://img.shields.io/github/issues/your-username/content-analyzer)](https://github.com/your-username/content-analyzer/issues)
