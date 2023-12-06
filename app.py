@@ -131,12 +131,14 @@ if "load_state" not in st.session_state:
 
 if st.sidebar.button('Analyse') or st.session_state.load_state:
     st.session_state.load_state = True
+    st.empty()
     start=time.time()
     with st.spinner('Analysing...'):
-        result = analysis.calculate_details(url)
-        if (time.time() - start) == 3:
-            st.write("Kindly wait!! That was a lot to process")
-        display(result)
+        try:
+            result = analysis.calculate_details(url)
+            display(result)
+        except:
+            st.error('Kindly check your URL. Either the text is too short or too long to process.', icon="🚨")
     end = time.time()
     seconds = str(round(end-start, 1))
     st.toast('Analysis finished in ' + seconds + 's', icon='🎉')
@@ -144,7 +146,69 @@ if st.sidebar.button('Analyse') or st.session_state.load_state:
 st.sidebar.text('OR')
 input_text = st.sidebar.text_area("Enter the text")
 if st.sidebar.button('Analyse Text'):
+    st.session_state.load_state = True
+    st.empty()
+    start = time.time()
     with st.spinner('Analysing...'):
-        result = analysis.calculate_text_details(input_text)
-        display(result)
+        try:
+            result = analysis.calculate_text_details(input_text)
+            display(result)
+        except:
+            st.error('Either the text is too short or too long to process.', icon="🚨")
+    end = time.time()
+    seconds = str(round(end - start, 1))
+    st.toast('Analysis finished in ' + seconds + 's', icon='🎉')
+    time.sleep(5)
 
+
+st.info('Click on > icon at the top-left corner to enter URL or text', icon="ℹ️")
+st.title("Content Analyzer")
+st.divider()
+st.write("Content Analyser is a web app that allows you to gain insights into any type of content. It provides you with comprehensive results based on the text data analyzed and presents the information in a standardized form. It is a versatile tool that allows you to input information either in the form of a URL or text directly. Users consistently praise Content Analyzer for its user-friendly interface and quick results, citing these features as standout strengths of the web app.\n\nImagine having a personal writing coach who can instantly assess your writing style, sentiment, and readability. Content Analyser does exactly that, offering a range of features designed to help you polish your craft and achieve maximum impact with your audience.")
+st.markdown("<br>", unsafe_allow_html=True)
+st.header("Features")
+para = '''
+📝 **Text Summarization**
+
+Gives you a summary of the text after analyzing your data. You must make sure that you enter a minimum of 60 words in the text area to get a valid summary. Therefore, this feature allows your long-form content to squeeze into concise, coherent summaries, saving valuable time during content review and editing. It gives you 50-200 words summary of your content based on the point that is most emphasized in the text.
+\n\n
+😃 **Sentiment Analysis**
+
+This allows you to know the positive score, negative score, polarity score, and subjective score of your content. Positive score is the measure of positivity in your content. Negative score gives you an idea about how negative your content sounds. Polarity helps you understand the sentiment of the text. It is expressed in numerical values that range from -1 to 1, where -1 indicates a very negative sentiment, 0 indicates a neutral sentiment, and 1 indicates a very positive sentiment.
+\n\n
+📖 **Readability Scores**
+
+Readability score gives you an idea about the text complexity. Content Analyser uses Gunning Fox formula to calculate the scores. The Gunning Fog formula generates a grade level between 0 and 20. It estimates the education level required to understand the text.
+\n\n
+🧮 **Statistical Insights**
+
+The web app provides statistical insights like word count, character count, sentence count, complex word count, average word length, average sentence length, syllable count, percentage of complex words, and speaking time. You receive a detailed overview of your content's structural nuances.
+\n\n
+🗣️ **Personal Pronouns**
+
+Using this tool you can identify and list personal pronouns used in the content. It provids valuable insights into the author's voice, tone, and perspective.
+\n\n
+🥹 **Emotion Detection**
+
+You will get a visual picture of the top five emotions depicted in your text. This report is represented in the form of bar graph.
+'''
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown(para)
+
+usage = '''
+    \t**Step 1:** Access the Content Analyzer web app at https://content-analyser.streamlit.app/.
+\n
+    \t**Step 2:** Input the content for analysis by either providing a URL or directly entering the text.
+\n
+    \t**Step 3:** Click the "Analyze" button to initiate the analysis process.
+\n
+    \t**Step 4:** Review the detailed results provided in various sections, including text summarization, sentiment analysis, readability scores, statistical insights, personal pronouns, and emotion detection.
+'''
+st.markdown("<br>", unsafe_allow_html=True)
+st.header("How to Use?")
+
+st.markdown(usage)
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
+st.write("Thanking you for reading this far😇. I am working on this app to add new features and make it more interesting. Feel free to reachout to suggest ideas or give a feedback.")
