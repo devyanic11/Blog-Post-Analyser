@@ -92,6 +92,7 @@ from nltk.tokenize import word_tokenize
 import string
 
 nltk.download('stopwords')
+nltk.download('punkt')
 stopwords = stopwords.words('english')
 
 
