@@ -3,12 +3,9 @@ matplotlib
 streamlit
 beautifulsoup4
 requests
-re
+regex
 nltk
-stopwords
-word_tokenize
 pyphen
-AutoTokenizer
-AutoModelForSequenceClassification
-softmax
-pipeline
+transformers
+scipy
+
