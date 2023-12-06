@@ -124,7 +124,13 @@ st.sidebar.title("Blog Post Analyser")
 
 
 url = st.sidebar.text_input("Enter URL")
-if st.sidebar.button('Analyse'):
+
+if "load_state" not in st.session_state:
+    st.session_state.load_state = False
+
+
+if st.sidebar.button('Analyse') or st.session_state.load_state:
+    st.session_state.load_state = True
     start=time.time()
     with st.spinner('Analysing...'):
         result = analysis.calculate_details(url)
